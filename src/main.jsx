@@ -6,7 +6,9 @@ import { Form, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
 import About from './components/About/About'
-import Book from './components/Book/Book'
+import Book from './components/Books/Books'
+import BookDEtails from './components/BookDetails/BookDEtails'
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
 const router = createBrowserRouter([{
   path: '/',
   element: <App />,
@@ -17,11 +19,22 @@ const router = createBrowserRouter([{
     },
     {
       path: '/book',
-      element: <Book />
+      element: <Book />,
+      loader: () => fetch('https://api.itbook.store/1.0/new')
+    },
+    {
+      path: 'book/:id',
+      element: <BookDEtails />,
+      loader: ({params}) =>fetch(`https://api.itbook.store/1.0/books/${params.id}`)
+      
     },
     {
       path: 'about',
       element: <About />
+    },
+    {
+      path:'loader',
+      element:<LoadingSpinner />
     }
   ]
 },
