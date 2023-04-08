@@ -9,9 +9,11 @@ import About from './components/About/About'
 import Book from './components/Books/Books'
 import BookDEtails from './components/BookDetails/BookDEtails'
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
+import ErrorPage from './components/ErrorPage/ErrorPage'
 const router = createBrowserRouter([{
   path: '/',
   element: <App />,
+  errorElement:<ErrorPage />,
   children: [
     {
       path: '/',
